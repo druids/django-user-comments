@@ -1,0 +1,55 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-11-14 15:34+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+
+#: contrib/is_core/cores.py:14
+msgid "add comment"
+msgstr "přidat poznámku"
+
+#: contrib/is_core/cores.py:32
+msgid "Author"
+msgstr "Autor"
+
+#: contrib/is_core/cores.py:33
+msgid "Created at"
+msgstr "Vytvořeno"
+
+#: contrib/is_core/cores.py:34
+msgid "Comment"
+msgstr "Poznámka"
+
+#: contrib/is_core/cores.py:49
+msgid "Comments"
+msgstr "Poznámky"
+
+#: models.py:12
+msgid "author"
+msgstr "autor"
+
+#: models.py:14 models.py:21
+msgid "comment"
+msgstr "poznámka"
+
+#: models.py:18
+msgid "object"
+msgstr "objekt"
+
+#: models.py:22
+msgid "comments"
+msgstr "poznámky"
