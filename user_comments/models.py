@@ -7,7 +7,18 @@ from django.utils.translation import ugettext_lazy
 from chamber.models import SmartModel
 
 
+class CommentQuerySet(models.QuerySet):
+
+    def filter_for_object(self, obj):
+        return self.filter(
+            content_type=ContentType.objects.get_for_model(obj),
+            object_pk=obj.id
+        )
+
+
 class Comment(SmartModel):
+
+    objects = CommentQuerySet.as_manager()
 
     author = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name=ugettext_lazy('author'), on_delete=models.CASCADE,
                                null=False, blank=False, db_index=True)
