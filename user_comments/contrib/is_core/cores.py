@@ -7,6 +7,7 @@ from is_core.generic_views.inlines.inline_objects_views import TabularInlineObje
 from user_comments.models import Comment
 
 from is_core.forms.models import SmartModelForm
+from is_core.generic_views.form_views import DetailModelFormView
 
 
 class CommentUIForm(SmartModelForm):
@@ -40,9 +41,20 @@ class CommentObjectsView(TabularInlineObjectsView):
         )
 
 
+class DetailCommentModelFormView(DetailModelFormView):
+
+    def get_readonly_fields(self):
+        return (
+            tuple(field for field in super().generate_fields() if field != 'comment')
+            if self.core.get_can_update_only_comment(self.request, obj=self.get_obj())
+            else super().get_readonly_fields()
+        )
+
+
 class CommentISCoreMixin:
 
     form_class = CommentUIForm
+    ui_detail_view = DetailCommentModelFormView
 
     notes_form_fieldset = (
         (ugettext_lazy('Comments'), {
@@ -52,3 +64,6 @@ class CommentISCoreMixin:
             )
         }),
     )
+
+    def get_can_update_only_comment(self, request, obj=None):
+        return hasattr(self, 'can_update_only_comment') and self.can_update_only_comment
