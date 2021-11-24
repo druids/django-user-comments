@@ -21,7 +21,7 @@ class Comment(SmartModel):
     objects = CommentQuerySet.as_manager()
 
     author = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name=ugettext_lazy('author'), on_delete=models.CASCADE,
-                               null=False, blank=False, db_index=True)
+                               null=True, blank=True, db_index=True)
     comment = models.TextField(verbose_name=ugettext_lazy('comment'), null=False, blank=False)
     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
     object_pk = models.TextField(db_index=True)
