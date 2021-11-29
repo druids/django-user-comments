@@ -42,14 +42,14 @@ from is_core.main import UIRESTModelISCore
 from user_comments.contrib.is_core.cores import CommentISCoreMixin
 
 
-class UserISCore(CommentISCoreMixin, UIRESTModelISCore):
+class UserCore(CommentISCoreMixin, DjangoUiRestCore):
 
     model = User
     form_fieldsets = (
          (None, {
             'fields': 'username', 'first_name', 'last_name'
          })
-    ) + CommentISCoreMixin.notes_form_fieldset
+    ) + CommentCoreMixin.notes_form_fieldset
 
 ```
 
@@ -58,14 +58,14 @@ The CommentISCoreMixin only sets ``form_class`` attribute and contains ``notes_f
 If you need change form of the core. You must extend from ``user_comments.contrib.is_core.cores.CommentUIForm``
 
 ```python
-from user_comments.contrib.is_core.cores import CommentUIForm
+from user_comments.contrib.is_core.cores import CommentUiForm
 
-
-class UserForm(CommentUIForm):
+e
+class UserForm(CommentUiForm):
     ...
 
 
-class UserISCore(CommentISCoreMixin, UIRESTModelISCore):
+class UserCore(CommentCoreMixin, DjangoUiRestCore):
 
     model = User
     form_class = UserForm
@@ -73,6 +73,6 @@ class UserISCore(CommentISCoreMixin, UIRESTModelISCore):
          (None, {
             'fields': 'username', 'first_name', 'last_name'
          })
-    ) + CommentISCoreMixin.notes_form_fieldset
+    ) + CommentCoreMixin.notes_form_fieldset
 
 ```

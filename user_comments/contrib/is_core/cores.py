@@ -7,10 +7,10 @@ from is_core.generic_views.inlines.inline_objects_views import TabularInlineObje
 from user_comments.models import Comment
 
 from is_core.forms.models import SmartModelForm
-from is_core.generic_views.form_views import DetailModelFormView
+from is_core.generic_views.detail_views import DjangoDetailFormView
 
 
-class CommentUIForm(SmartModelForm):
+class CommentUiForm(SmartModelForm):
 
     comment = forms.CharField(label=ugettext_lazy('add comment'), required=False, widget=forms.Textarea())
 
@@ -41,22 +41,22 @@ class CommentObjectsView(TabularInlineObjectsView):
         )
 
 
-class DetailCommentModelFormView(DetailModelFormView):
+class DetailCommentFormView(DjangoDetailFormView):
 
     def get_readonly_fields(self):
         return (
-            tuple(field for field in super().generate_fields() if field != 'comment')
+            tuple(field for field in super().get_fields() if field != 'comment')
             if self.core.get_can_update_only_comment(self.request, obj=self.get_obj())
             else super().get_readonly_fields()
         )
 
 
-class CommentISCoreMixin:
+class CommentCoreMixin:
 
-    form_class = CommentUIForm
-    ui_detail_view = DetailCommentModelFormView
+    form_class = CommentUiForm
+    ui_detail_view = DetailCommentFormView
 
-    notes_form_fieldset = (
+    notes_fieldset = (
         (ugettext_lazy('Comments'), {
             'fieldsets': (
                 (None, {'inline_view': CommentObjectsView}),
