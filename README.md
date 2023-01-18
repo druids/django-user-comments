@@ -9,13 +9,13 @@ User comments adds model for commenting django model instances for example in th
 Prerequisites
 -------------
 
-- django-chamber~=0.4.6
+- skip-django-chamber~=0.6.16.3
 
 Installation
 ------------
 
 ```python
-pip install django-user-comments
+pip install skip-django-user-comments
 ```
 
 Configuration
